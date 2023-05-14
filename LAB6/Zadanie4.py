@@ -1,16 +1,16 @@
-def evaluate_postfix_expression(expression):
-    stack = []
+def oceń_wyrażenie_postfiksowe(wyrażenie):
+    stos = []
 
-    for token in expression.split():
+    for token in wyrażenie.split():
         if token.isdigit():
-            stack.append(int(token))
+            stos.append(int(token))
         else:
-            operand2 = stack.pop()
-            operand1 = stack.pop()
+            operand2 =  stos.pop()
+            operand1 =  stos.pop()
             result = perform_operation(token, operand1, operand2)
-            stack.append(result)
+            stos.append(result)
 
-    return stack.pop()
+    return  stos.pop()
 
 
 def perform_operation(operator, operand1, operand2):
@@ -26,7 +26,7 @@ def perform_operation(operator, operand1, operand2):
         return operand1 ** operand2
 
 
-expression = input("Podaj wyrażenie arytmetyczne w notacji postfiksowej: ")
-result = evaluate_postfix_expression(expression)
+wyrażenie = input("Podaj wyrażenie arytmetyczne w notacji postfiksowej: ")
+result = oceń_wyrażenie_postfiksowe(wyrażenie)
 
-print(f"Wynik wyrażenia {expression} wynosi: {result}")
+print(f"Wynik wyrażenia {wyrażenie} wynosi: {result}")
